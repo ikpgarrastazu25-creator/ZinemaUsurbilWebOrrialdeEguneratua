@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="eu">
-    <meta charset="utf-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="Pablo Garrastazu">
-<meta name="description"
-    content="Hemen bezeroak berriz eskatutako web aplikazioaren orri nagusia dago.">
-    <head>
+<meta name="description" content="Hemen bezeroak berriz eskatutako web aplikazioaren orri nagusia dago.">
+
+<head>
     <title>ZineUsurbil</title>
     <link rel="icon" type="image/x-icon" href="img2/logo_zineusurbil2.png">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="">
     <script src="" defer></script>
     <script src="" defer></script>
 </head>
+
 <body>
 
     <header>
@@ -21,7 +22,7 @@
 
         <nav class="nabigazio_elementuak">
             <div class="menu">
-               
+
                 <div class="azpimenu" id="azpimenu">
                     <p><a href="index.html">Orri Nagusia</a></p>
                     <p><a href="Kartelera.html">Kartelera</a></p>
@@ -31,14 +32,16 @@
             </div>
         </nav>
     </header>
-     <main>
+    <main>
         <br>
         <h1 class="takilleroak">Pelikula takilleroak</h1>
         <br><br>
         <div class="takilleroak_pelikulak">
             <div class="pelikula_card">
                 <a href="Kartelera.html">
-                    <img srcset="/img/320/zootropolis2.jpg"
+                    <img srcset="img/320/zootropolis2.jpg 320w, img/480/zootropolis2.jpg 480w, img/800/zootropolis2.jpg 800w"
+                        sizes="(max-width: 480px) 100vw, (max-width: 800px) 50vw, 33vw" alt="Zootropolis"
+                        class="pelikula_imagen">
                 </a>
                 <div id="tituluak" class="tituluak"></div>
 
@@ -53,5 +56,48 @@
             </div>
         </div>
     </main>
+
+   
+    <footer>
+      
+        <div class="footer_nabigazioa">
+            <img class="logoa_argazkia" src="img2/logo_zineusurbil2.png" alt="ZineUsurbil logo">
+            <h1 class="ZineUsurbil"><a class="ZineUsurbil_textua" href="index.html">ZINEUSURBIL</a></h1>
+            <nav class="nabigazio_elementuak">
+                <p><a href="index.html">Orri Nagusia</a></p>
+                <p><a href="Kartelera.html">Kartelera</a></p>
+                <p><a href="promozioak.html">Promozioak</a></p>
+                <p><a href="Balorazioak.html">Balorazioak</a></p>
+                <p><a href="Saskia.html">Saskia</a></p>
+            </nav>
+        </div>
+
+        
+        <div class="sare_sozialak">
+            <a href="https://www.instagram.com" target="_blank" title="Instagram Cinesa">
+                <img class="instagram_logo" src="img/instagram.jfif" alt="Instagram">
+            </a>
+            <a href="https://x.com" target="_blank"
+                title="Cinesa X">
+                <img class="x_logo" src="img/x.png" alt="X">
+            </a>
+            <a href="https://www.tiktok.com/@cinesa.es?lang=es" target="_blank" title="TikTok Cinesa">
+                <img class="tik_tok_logo" src="img/tiktok.png" alt="Tik Tok">
+            </a>
+            <a href="https://www.youtube.com" target="_blank" title="YouTube Cinesa">
+                <img class="youtube_logo" src="img/youtube.png" alt="YouTube">
+            </a>
+            <a href="https://www.cinesa.es/documentos-legales/aviso-legal/">
+                <img class="copyright" src="img/copyright.png">
+            </a>
+            <p class="ohar_legalak">Ohar legalak</p>
+        </div>
+
+        <p class="copyright_p">
+            © 2025 Cinesa. Eskubide guztiak erreserbatuta
+        </p>
+    </footer>
+
 </body>
+
 </html>
