@@ -1,3 +1,8 @@
+/*
+    Estilo globalak
+    - Fitxategi honek orriaren edo komponentearen itxura definitzen du.
+    - Aldaketak egiten badituzu, kontuz selektore globalekin.
+*/
 /*Estilo globalak*/
 html, body {
     width: 100%;
@@ -16,7 +21,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
 }
-/* Header */
+/* Goiburua */
 header {
     width: 100%;
     background: rgba(212, 9, 9, 0.5);
@@ -29,6 +34,41 @@ header {
     gap: 12px;
 }
 
+/* Takilleroak header: center title + button */
+.takilleroak_header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin: 16px 0;
+}
+
+.takilleroak_btn {
+    background: linear-gradient(180deg,#ff5252,#d40909);
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(208,9,9,0.25);
+    transition: transform 140ms ease, box-shadow 140ms ease, opacity 140ms ease;
+}
+
+.takilleroak_btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(208,9,9,0.32);
+}
+
+.takilleroak_btn:active { transform: translateY(0); }
+
+@media (max-width: 599px) {
+    .takilleroak_header { flex-direction: column; gap: 8px; }
+    .takilleroak_btn { width: 90%; font-size: 1.05rem; padding: 12px 16px; }
+}
+
+/* Goiburuko logoaren tamaina */
 header .logoa_argazkia {
     width: 80px;
     height: auto;
@@ -56,7 +96,7 @@ nav.nabigazio_elementuak a:hover {
     text-decoration: underline;
     transform: none;
 }
-
+/* Edukia (main) - atal nagusiak */
 main {
     flex: 1 0 auto;
     padding: 20px;
@@ -66,11 +106,146 @@ main {
 .pelikula_imagen {
     width: 100%;
     height: auto;
-    display: block;
+ 
     border-radius: 6px;
+    
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+.pelikula_card:hover {
+    transform: scale(1.03);
+    transition: transform 0.3s;
+}
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    font-weight: 700;
+}
+/*
+    Pelikula-grid-a
+    - Hasieran ezkutatuta dago `.peliculas_container` klasearekin.
+    - `visible` klasea gehitzen denean, edukia agertzen da transizioarekin.
+*/
+/* Gridak pelikulak erakusteko */
+.peliculas_container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    align-items: start;
+    margin-top: 16px;
+    /* Pelikula ezkutatua*/
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: max-height 420ms ease, opacity 300ms ease, transform 300ms ease;
 }
 
-/* responsive */
+.peliculas_container.visible {
+    max-height: 2400px; 
+    opacity: 1;
+    transform: none;
+}
+
+/* Pelikula txartel bakoitzaren estiloa */
+.pelikula_card {
+    background: rgba(255,255,255,0.03);
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    transform: translateY(12px);
+    opacity: 0;
+    transition: transform 360ms cubic-bezier(.2,.8,.2,1), opacity 320ms ease;
+}
+.pelikula_card.show {
+    transform: none;
+    opacity: 1;
+}
+
+/* Overlay kargatze estiloak */
+/*
+    Kargatze-overlay-a
+    - `loader_overlay` zatiak kargatze-barra eta testua biltzen ditu.
+    - `aria-hidden="false"` egiten denean agertzen da.
+*/
+/* Overlay kargatze estiloak */
+.loader_overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.55);
+    z-index: 40;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 240ms ease;
+}
+.loader_overlay[aria-hidden="false"] {
+    pointer-events: auto;
+    opacity: 1;
+}
+.loader_inner {
+    width: 90%;
+    max-width: 440px;
+    padding: 18px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 10px;
+    text-align: center;
+    color: #fff;
+}
+.loader_bar {
+    height: 14px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    padding: 6px; /* espazioa inguruan pixka bat */
+}
+
+/* Estiloak HTML5 <progress> elementurako */
+progress#loader_progress {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 12px;
+    border: none;
+    background: rgba(255,255,255,0.12);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.takilleroak_pelikulak { position: relative; }
+
+
+.tituluak {
+    margin-top: 8px;
+    text-align: center;
+    font-weight: 600;
+    color: #fff;
+}
+
+@media (max-width: 599px) {
+    .peliculas_container { grid-template-columns: 1fr; }
+}
+@media (min-width: 600px) and (max-width: 899px) {
+    .peliculas_container { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 900px) and (max-width: 1199px) {
+    .peliculas_container { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 1200px) {
+    .peliculas_container { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* Erantzunkorra (responsive) */
 @media (min-width: 640px) {
     header .logoa_argazkia { width: 100px; }
     header .ZineUsurbil { font-size: 1.5rem; }
@@ -82,7 +257,7 @@ main {
 }
 
 
-/* Footer */
+/* Oina (footer) */
 footer {
     width: 100%;
     background: rgba(212, 9, 9, 0.5);
@@ -93,7 +268,14 @@ footer {
     box-sizing: border-box;
     margin-top: auto;
 }
-
+.ZineUsurbil {
+     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: white;
+    gap: 16px;
+    align-items: center;
+}
 .footer_nabigazioa {
     display: flex;
     flex-wrap: wrap;
@@ -152,24 +334,3 @@ footer {
     filter: grayscale(0%);
 }
 
-/* Grid for movie cards */
-.peliculas_container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 16px;
-    align-items: start;
-    margin-top: 16px;
-}
-
-.pelikula_card {
-    background: rgba(255,255,255,0.03);
-    padding: 8px;
-    border-radius: 8px;
-}
-
-.tituluak {
-    margin-top: 8px;
-    text-align: center;
-    font-weight: 600;
-    color: #fff;
-}

@@ -1,23 +1,33 @@
 <!DOCTYPE html>
+<!-- Trelloa: https://trello.com/b/5ILaGNgl/froga-jasoa1-markatze-->
+<!--
+    Orrialde nagusia: ZineUsurbil
+    - HTML hau filma-kartelen aurkezpen sinplea erakusten du.
+    - `index.css` estilotik eta `index.js` interakzioetatik mendekoa da.
+    - Iruzkindu hau editatu nahi baduzu, utzi dokumentuaren egitura lalai.
+-->
 <html lang="eu">
 <head>
+    <!-- Metako informazioa (burua / head) -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Pablo Garrastazu">
     <meta name="description" content="Hemen bezeroak berriz eskatutako web aplikazioaren orri nagusia dago.">
     <title>ZineUsurbil</title>
-    <link rel="icon" type="image/x-icon" href="img2/logo_zineusurbil2.png">
+    <link rel="icon" type="image/x-icon" href="/img/logo_zineusurbil.png">
     <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="">
-    <script src="" defer></script>
-    <script src="" defer></script>
-</head>
+    <script src="index.js" defer></script>
+    <!-- Script-a atzealdean kargatzen da (`defer`) DOM egonkorra izateko -->
+    </head>
 
 <body>
+       <!-- headerra -->
 
+    <!-- Goiburua: logotipoa eta nabigazioa -->
     <header>
         <a href="index.html"><img class="logoa_argazkia" src="img/logo_zineusurbil.png" alt="ZineUsurbil logoa"></a>
         <h1 class="ZineUsurbil">ZineUsurbil</h1>
+    <!-- Nabigazio elementuak -->
 
         <nav class="nabigazio_elementuak">
             <div class="menu">
@@ -32,17 +42,22 @@
         </nav>
     </header>
     <main>
-        <h2 class="takilleroak">Pelikula takilleroak</h2>
-
+    
+        <!-- Atal honen helburua: pelikula-txartelak ikusteko botoia eta izenburua -->
+        <div class="takilleroak_header">
+            <h2 id="takilleroak-heading" class="takilleroak">Pelikula takilleroak</h2>
+            <button id="toggle_pelikulak" class="takilleroak_btn" aria-controls="peliculas_container" aria-expanded="false">Ikusi</button>
+        </div>
+        <!-- Pelikula-txartelen atal nagusia -->
         <section class="takilleroak_pelikulak" aria-labelledby="takilleroak-heading">
-            <div class="peliculas_container">
+            <div class="peliculas_container" id="peliculas_container">
                 <article class="pelikula_card">
                     <figure>
                         <a href="Kartelera.html">
                             <picture>
                                 <img src="img/320/avatar.jpg"
                                      srcset="img/320/avatar.jpg 320w, img/480/avatar.jpg 480w, img/800/avatar.jpg 800w"
-                                     sizes="(max-width: 480px) 100vw, (max-width: 800px) 50vw, 33vw"
+                                     sizes="(min-width:1200px) 25vw, (min-width:900px) 33vw, (min-width:600px) 50vw, 100vw"
                                      alt="Avatar poster" class="pelikula_imagen" loading="lazy">
                             </picture>
                         </a>
@@ -56,7 +71,7 @@
                             <picture>
                                 <img src="img/320/running.jpg"
                                      srcset="img/320/running.jpg 320w, img/480/running.jpg 480w, img/800/running.jpg 800w"
-                                     sizes="(max-width: 480px) 100vw, (max-width: 800px) 50vw, 33vw"
+                                     sizes="(min-width:1200px) 25vw, (min-width:900px) 33vw, (min-width:600px) 50vw, 100vw"
                                      alt="Running poster" class="pelikula_imagen" loading="lazy">
                             </picture>
                         </a>
@@ -70,7 +85,7 @@
                             <picture>
                                 <img src="img/320/wicked2.jpg"
                                      srcset="img/320/wicked2.jpg 320w, img/480/wicked2.jpg 480w, img/800/wicked2.jpg 800w"
-                                     sizes="(max-width: 480px) 100vw, (max-width: 800px) 50vw, 33vw"
+                                     sizes="(min-width:1200px) 25vw, (min-width:900px) 33vw, (min-width:600px) 50vw, 100vw"
                                      alt="Wicked poster" class="pelikula_imagen" loading="lazy">
                             </picture>
                         </a>
@@ -84,13 +99,29 @@
                             <picture>
                                 <img src="img/320/zootropolis.jpg"
                                      srcset="img/320/zootropolis.jpg 320w, img/480/zootropolis.jpg 480w, img/800/zootropolis.jpg 800w"
-                                     sizes="(max-width: 480px) 100vw, (max-width: 800px) 50vw, 33vw"
+                                     sizes="(min-width:1200px) 25vw, (min-width:900px) 33vw, (min-width:600px) 50vw, 100vw"
                                      alt="Zootropolis poster" class="pelikula_imagen" loading="lazy">
                             </picture>
                         </a>
                         <figcaption class="tituluak">Zootropolis</figcaption>
                     </figure>
                 </article>
+            </div>
+
+            <!--
+                Kargatze-overlay-a: botoia sakatzen denean agertzen da.
+                - `#peliculas_loader` elementoak barra eta ehunekoaren testua dauzka.
+                - `aria-hidden` atributuaren bidez ezkutatzen/erakusten da.
+            -->
+            <!-- erabiltzaileak botoia sakatzen duenean agertzen da eta karga simulatzen du -->
+            <div class="loader_overlay" id="peliculas_loader" aria-hidden="true">
+                <div class="loader_inner">
+                    <div class="loader_bar">
+                        <!-- HTML5 progress bar elemetnau -->
+                        <progress id="loader_progress" max="100" value="0"></progress>
+                    </div>
+                    <div class="loader_text" id="loader_text">Kargatzen 0%</div>
+                </div>
             </div>
         </section>
     </main>
