@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="eu">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="author" content="Pablo Garrastazu">
-<meta name="description" content="Hemen bezeroak berriz eskatutako web aplikazioaren orri nagusia dago.">
-
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Pablo Garrastazu">
+    <meta name="description" content="Hemen bezeroak berriz eskatutako web aplikazioaren orri nagusia dago.">
     <title>ZineUsurbil</title>
     <link rel="icon" type="image/x-icon" href="img2/logo_zineusurbil2.png">
     <link rel="stylesheet" href="index.css">
@@ -18,7 +17,7 @@
 
     <header>
         <a href="index.html"><img class="logoa_argazkia" src="img/logo_zineusurbil.png" alt="ZineUsurbil logoa"></a>
-        <h1 class="ZineUsurbil"></h1>
+        <h1 class="ZineUsurbil">ZineUsurbil</h1>
 
         <nav class="nabigazio_elementuak">
             <div class="menu">
@@ -33,28 +32,34 @@
         </nav>
     </header>
     <main>
-        <br>
-        <h1 class="takilleroak">Pelikula takilleroak</h1>
-        <br><br>
-        <div class="takilleroak_pelikulak">
-            <div class="pelikula_card">
-                <a href="Kartelera.html">
-                    <img srcset="img/320/zootropolis2.jpg 320w, img/480/zootropolis2.jpg 480w, img/800/zootropolis2.jpg 800w"
-                        sizes="(max-width: 480px) 100vw, (max-width: 800px) 50vw, 33vw" alt="Zootropolis"
-                        class="pelikula_imagen">
-                </a>
-                <div id="tituluak" class="tituluak"></div>
+        <h2 class="takilleroak">Pelikula takilleroak</h2>
 
-                <section class="pelikulak_geziak">
-                    <button id="eskubi_botoia" onclick="">
-                        <img src="/img/eskubi.png" alt="Eskubiko pelikula">
+        <section class="takilleroak_pelikulak" aria-labelledby="takilleroak-heading">
+            <article class="pelikula_card">
+                <figure>
+                    <a href="Kartelera.html">
+                        <picture>
+                            <source type="image/webp"
+                                    srcset="img/320/zootropolis2.webp 320w, img/480/zootropolis2.webp 480w, img/800/zootropolis2.webp 800w">
+                            <img src="img/320/zootropolis2.jpg"
+                                 srcset="img/320/zootropolis2.jpg 320w, img/480/zootropolis2.jpg 480w, img/800/zootropolis2.jpg 800w"
+                                 sizes="(max-width: 480px) 100vw, (max-width: 800px) 50vw, 33vw"
+                                 alt="Zootropolis poster" class="pelikula_imagen" loading="lazy">
+                        </picture>
+                    </a>
+                    <figcaption id="tituluak" class="tituluak">Zootropolis</figcaption>
+                </figure>
+
+                <nav class="pelikulak_geziak" aria-label="Controles de carrusel de películas">
+                    <button id="eskubi_botoia" aria-label="Siguiente película">
+                        <img src="img/eskubi.png" alt="Siguiente">
                     </button>
-                    <button id="ezkerra_botoia" onclick="">
-                        <img src="/img/ezkerra.png" alt="Ezkerreko pelikula">
+                    <button id="ezkerra_botoia" aria-label="Película anterior">
+                        <img src="img/ezkerra.png" alt="Anterior">
                     </button>
-                </section>
-            </div>
-        </div>
+                </nav>
+            </article>
+        </section>
     </main>
 
    

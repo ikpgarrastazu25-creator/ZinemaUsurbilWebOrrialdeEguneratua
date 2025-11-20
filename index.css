@@ -8,7 +8,7 @@ html, body {
 
 body {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; /* Testuaren letra tipoa */
-    background: radial-gradient(circle, rgba(23, 20, 20, 1) 0%, rgba(14, 24, 66, 1) 100%); /* Atzeko planoa, gradiente erradial batekin */
+    background color: ;:  rgba(14, 24, 66, 1) 100%;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
